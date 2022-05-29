@@ -1,0 +1,8 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>This is the Note Details</h1>
+{{note}}<br>
+@{{note.lable.lable}}
+{{note.updated |date}}
+
+{% endblock content %}

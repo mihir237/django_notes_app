@@ -1,0 +1,28 @@
+{% extends 'main.html' %} {% block content %}
+<div class="grid justify-items-center">
+  <h3 class="text-3xl font-bold">Create Lable</h3>
+
+  {% csrf_token %}
+  <form class="border-2 border-black py-6 px-12 mt-6 rounded-2xl" method="POST" action="">
+  
+    <p>
+      <label class="text-xl font-bold mt-2"  for="id_host">Host:</label>
+      <select  name="host" required="" id="id_host">
+        <option value="{{request.user.id}}" selected>{{request.user}}</option>
+      </select>
+    </p>
+    <p>
+      <label class="text-xl font-bold " for="id_lable">Lable:</label>
+      <input
+      class="border-2 mt-4 rounded-3xl px-2 py-[2px]"
+        type="text"
+        name="lable"
+        maxlength="200"
+        required=""
+        id="id_lable"
+      />
+    </p>
+    <input class="ml-[50%] translate-x-[-50%] mt-8 border-2 px-12 py-[2px] rounded-3xl bg-blue-300 hover:border-black " name="create_lable" type="submit" value="Submit" />
+  </form>
+</div>
+{% endblock content %}

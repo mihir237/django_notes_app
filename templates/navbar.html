@@ -1,0 +1,35 @@
+
+    <div class=" flex  items-center justify-between p-8 pb-2 mb-6 border-b-2  border-gray-100 rounded-b-3xl bg-[#cbf0f8] ">
+        <h1 class="leading-tight">
+            <span class="absolute top-[1.7rem] pl-[1px]"> {{request.user|capfirst}}'s</span>
+            <a class="text-3xl font-extrabold" href="/">NOTE </a>
+        </h1>
+        {% url 'home' as home_url %}
+       {% if request.path ==  home_url   %}
+        <div class="flex  ">
+            <form class="flex bg-white px-2 w-[54rem]  rounded-xl" method="GET" action={% url 'home' %}>
+                <svg class="mt-2 mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+                <input class="w-[54rem] p-2 outline outline-0" type="text" name="q" placeholder="Search"/>
+                <a href="/">
+                    
+                    <svg  class="mt-2 " xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                    </svg>
+                </a> 
+            </form> 
+        </div>
+        {% endif %}
+            
+            <div class="login-details">
+            
+            {% if request.user.is_authenticated %}
+            <a class="m-2   rounded-xl px-4 py-[3px] bg-gray-400 text-white" href="{% url 'logout' %}">Logout </a>
+            {% else %}
+            <a class="m-2 border-2 rounded-xl px-4 py-[3px] bg-blue-600 text-white" href={% url 'login' %}>Login </a>
+{% endif %}
+</div>
+</div>
+

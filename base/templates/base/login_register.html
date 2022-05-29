@@ -1,0 +1,111 @@
+{% extends 'main.html' %} {% block content %} {% if page == 'login' %}
+<div>
+  <form
+    class="flex flex-col justify-center rounded-xl m-auto w-[50%] border-2 border-black p-4"
+    method="POST"
+    action=""
+  >
+    <h1 class="ml-2 text-3xl font-bold mb-6">Login</h1>
+    {% csrf_token %}
+
+    <label class="ml-2 text-xl" for="username">Username</label>
+    <input
+      class="border-2 p-2 rounded-3xl mb-4"
+      class="mb-4"
+      type="text"
+      name="username"
+      placeholder="Enter Username"
+    />
+    <label class="ml-2 text-xl" for="password">Password</label>
+    <input
+      class="border-2 p-2 rounded-3xl"
+      type="password"
+      name="password"
+      placeholder="Enter Password"
+    />
+
+    <input
+      class="border-2 w-[20%] my-4 rounded-2xl px-2 py-1 m-auto mt-8 bg-blue-600 text-white"
+      type="submit"
+      value="Login"
+    />
+    <div class="flex m-auto text-sm">
+      <p>haven't signed up yet?</p>
+      <a class="text-blue-600 underline" href="{% url 'register' %}">Sign Up</a>
+    </div>
+  </form>
+</div>
+{% else %}
+<div>
+  <form class="flex flex-col justify-center rounded-xl m-auto w-[50%] border-2 border-black p-4" method="POST" action="">
+    <h1 class="ml-2 text-3xl font-bold mb-6">Create Account</h1>
+    {% csrf_token %}
+
+      
+      <p>
+        <label class="ml-2 text-xl" for="id_username">Username</label>
+        <input
+        class="border-2 p-2 rounded-3xl w-[100%] mb-4"
+          type="text"
+          name="username"
+          maxlength="150"
+          autocapitalize="none"
+          autocomplete="username"
+          autofocus=""
+          required=""
+          id="id_username"
+          placeholder="Create Username..."
+        />
+        <span class="hidden"
+          >Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+          only.</span
+        >
+      </p>
+      <p>
+        <label class="ml-2 text-xl" for="id_password1">Password</label>
+        <input
+        class="border-2 p-2 rounded-3xl w-[100%] mb-4"
+          type="password"
+          name="password1"
+          autocomplete="new-password"
+          required=""
+          id="id_password1"
+          placeholder="Create Password..."
+        />
+        <span class="hidden"></span>
+      </p>
+      <ul class="hidden">
+        <li>
+          Your password can’t be too similar to your other personal information.
+        </li>
+        <li>Your password must contain at least 8 characters.</li>
+        <li>Your password can’t be a commonly used password.</li>
+        <li>Your password can’t be entirely numeric.</li>
+      </ul>
+      <p></p>
+      <p>
+        <label class="ml-2 text-xl" for="id_password2">Password confirmation</label>
+        <input
+        class="border-2 p-2 rounded-3xl w-[100%] mb-2"
+          type="password"
+          name="password2"
+          autocomplete="new-password"
+          required=""
+          id="id_password2"
+          placeholder="Renter Password..."
+        />
+        <span class="hidden"
+          >Enter the same password as before, for verification.</span
+        >
+      </p>
+   
+    <input       class="border-2 w-[20%] my-4 rounded-2xl px-2 py-1 m-auto mt-8 bg-blue-600 text-white"
+    type="submit" value="Register" />
+    <div class="flex m-auto text-sm">
+      <p>Already signed up?</p>
+      <a class="text-blue-600 underline" href="{% url 'login' %}">Login</a>
+    </div>
+  </form>
+ 
+</div>
+{% endif %} {% endblock content %}
